@@ -56,14 +56,16 @@ console.log(x);
 //Exercise 4
 let csvData = "name,age\nFrodo,50\nSam,38\nMerry,36\nPippin,26";
 let result1 = [];
+let obj = {};
 let csvArr = csvData.split("\n");
 let headers = csvArr[0].split(",");
 csvArr = csvArr.slice(1);
 for (let i = 0; i < csvArr.length; i++) {
   let temp = csvArr[i].split(",");
-  result1.push({
-    [headers[0]]: temp[0],
-    [headers[1]]: parseInt(temp[1]),
-  });
+  for (let i = 0; i < temp.length; i++) {
+    obj[headers[i]] = temp[i];
+  }
+  result1.push(obj);
+  obj = {};
 }
 console.log(result1);
